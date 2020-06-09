@@ -21,6 +21,9 @@ else{
     console.log({error})
 }
 })
+app.get('/',(req,res)=>{
+    res.send('Hello');
+})
 app.post('/usersregister', storeUserController);
 
   
