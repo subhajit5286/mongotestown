@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 
 const mongoose = require('mongoose');
-const storeUserController = require('./controllers/storeUser');
+const storeUserController = require('./controllers/userRoute');
 const app =new express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
