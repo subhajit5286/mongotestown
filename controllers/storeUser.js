@@ -11,11 +11,18 @@ const router = express.Router();
 //     })
 // }
 router.post('/register', async (req, res) => {
-      User.create(req.body, (error, user) => {
+  const newUser = User.create(req.body, (error, user) => {
            if (error) {
                return res.send({error})
            }
-           res.send('user creation success')
+           res.send({
+                    
+                     _id: newUser.id,
+                     name: newUser.name,
+                     email: newUser.email,
+                     isAdmin: newUser.isAdmin,
+                     //token: getToken(newUser)
+                 })
        })
       })    
 // router.post('/register', async (req, res) => {
