@@ -2,25 +2,15 @@ const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
  
 const UserSchema = new mongoose.Schema({
-    
+    name: { type: String, required: true },
     email: {
-        type: String,
-        required: true,
-        unique: true
+      type: String, required: true, unique: true, index: true, dropDups: true,
     },
-    password: {
-        type: String,
-        required: true
-    }
-})
- 
-UserSchema.pre('save', function (next) {
-    const user = this
- 
-    bcrypt.hash(user.password, 10, function (error, encrypted) {
-        user.password = encrypted
-        next()
-    })
-})
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, required: true, default: false },
+  });
+  
+  //const userModel = mongoose.model('User', userSchema);
+  
  
 module.exports = mongoose.model('User', UserSchema);
