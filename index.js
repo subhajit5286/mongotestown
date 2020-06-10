@@ -33,7 +33,7 @@ app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use("/api/orders", orderRoute);
 app.get("/api/config/paypal", (req, res) => {
-  res.send(config.PAYPAL_CLIENT_ID);
+  res.send(process.env.PAYPAL_CLIENT_ID);
 })
 
 var port = process.env.PORT || 5000;
