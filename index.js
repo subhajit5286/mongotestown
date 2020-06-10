@@ -26,8 +26,8 @@ else{
 app.get('/',(req,res)=>{
     res.send('Hello');
 })
-app.post('/usersregister', storeUserController);
-
+//app.post('/usersregister', storeUserController);
+app.use('/api/users', storeUserController);
 var port = process.env.PORT || 5000;
   
 
