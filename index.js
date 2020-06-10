@@ -5,7 +5,9 @@ const express = require('express');
 const path = require('path');
 
 const mongoose = require('mongoose');
-const storeUserController = require('./routes/userRoute');
+const userRoute = require('./routes/userRoute');
+const productRoute = require('./routes/productRoute');
+const orderRoute = require('./routes/orderRoute');
 const app =new express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -27,7 +29,13 @@ app.get('/',(req,res)=>{
     res.send('Hello');
 })
 //app.post('/usersregister', storeUserController);
-app.use('/api/users', storeUserController);
+app.use('/api/users', userRoute);
+app.use('/api/products', productRoute);
+app.use("/api/orders", orderRoute);
+app.get("/api/config/paypal", (req, res) => {
+  res.send(config.PAYPAL_CLIENT_ID);
+})
+
 var port = process.env.PORT || 5000;
   
 
