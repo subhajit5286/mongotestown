@@ -11,16 +11,16 @@ const router = express.Router();
 //     })
 // }
 router.post('/register', async (req, res) => {
-  const newUser = User.create(req.body, (error, user) => {
+   User.create(req.body, (error, user) => {
            if (error) {
                return res.send({error})
            }
            res.send({
                     
-                     _id: newUser.id,
-                     name: newUser.name,
-                     email: newUser.email,
-                     isAdmin: newUser.isAdmin,
+                     _id: user.id,
+                     name: user.name,
+                     email: user.email,
+                     isAdmin: user.isAdmin,
                      //token: getToken(newUser)
                  })
        })
