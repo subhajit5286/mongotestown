@@ -5,8 +5,8 @@ require("dotenv").config();
     const token = req.headers.authorization;
   
     if (token) {
-      //const onlyToken = token.slice(7, token.length);
-      jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
+      const onlyToken = token.slice(7, token.length);
+      jwt.verify(onlyToken, process.env.JWT_SECRET, (err, decode) => {
         if (err) {
           return res.status(401).send({ msg: 'Invalid Token' });
         }
