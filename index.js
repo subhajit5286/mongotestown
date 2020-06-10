@@ -1,6 +1,6 @@
 
 const bodyParser = require('body-parser');
-
+require("dotenv").config();
 const express = require('express');
 const path = require('path');
 
@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-mongoose.connect('mongodb+srv://subhajit:sb1234@cluster0-jeuzh.mongodb.net/test?retryWrites=true&w=majority',
+const MONGODB_URL = process.env.MONGODB_URL;
+
+mongoose.connect(MONGODB_URL,
 { useNewUrlParser: true,useUnifiedTopology: true },(error)=>{
 if(!error){
     console.log('success')
