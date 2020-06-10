@@ -6,7 +6,7 @@ require("dotenv").config();
   
     if (token) {
       const onlyToken = token.slice(7, token.length);
-      jwt.verify(onlyToken, process.env.JWT_SECRET, (err, decode) => {
+      jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
         if (err) {
           return res.status(401).send({ msg: 'Invalid Token' });
         }
