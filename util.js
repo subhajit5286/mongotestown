@@ -11,4 +11,5 @@ const getToken = (user) => {
       expiresIn: '48h'
     })
   }
+  
   module.exports= getToken;
