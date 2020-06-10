@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const express = require('express');
 const router = express.Router();
-
+const getToken = require('../util');
 // module.exports = (req, res) => {
 //     User.create(req.body, (error, user) => {
 //         if (error) {
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
                      name: user.name,
                      email: user.email,
                      isAdmin: user.isAdmin,
-                     //token: getToken(newUser)
+                     token: getToken(newUser)
                  })
        })
       })    
